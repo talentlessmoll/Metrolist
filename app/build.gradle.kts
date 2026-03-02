@@ -6,6 +6,7 @@ val localPropertiesFile = rootProject.file("local.properties")
 if (localPropertiesFile.exists()) {
     localProperties.load(localPropertiesFile.inputStream())
 }
+
 plugins {
     id("com.android.application")
     alias(libs.plugins.hilt)
@@ -15,15 +16,16 @@ plugins {
 }
 
 android {
-    namespace = "com.metrolist.music"
+    // Identity Update for HEXARO
+    namespace = "com.hexaro.music"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.metrolist.music"
+        applicationId = "com.hexaro.music"
         minSdk = 26
         targetSdk = 36
         versionCode = 142
-        versionName = "13.2.1"
+        versionName = "13.2.1-Hexaro"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
@@ -39,14 +41,11 @@ android {
 
     flavorDimensions += listOf("variant")
     productFlavors {
-        // FOSS variant (default) - F-Droid compatible, no Google Play Services
         create("foss") {
             dimension = "variant"
             isDefault = true
             buildConfigField("Boolean", "CAST_AVAILABLE", "false")
         }
-
-        // GMS variant - with Google Cast support (requires Google Play Services)
         create("gms") {
             dimension = "variant"
             buildConfigField("Boolean", "CAST_AVAILABLE", "true")
@@ -88,11 +87,8 @@ android {
         debug {
             applicationIdSuffix = ".debug"
             isDebuggable = true
-            signingConfig = if (System.getenv("GITHUB_EVENT_NAME") == "pull_request") {
-                signingConfigs.getByName("debug")
-            } else {
-                signingConfigs.getByName("persistentDebug")
-            }
+            // FORCED TO DEFAULT DEBUG TO PREVENT GITHUB BUILD FAILURES
+            signingConfig = signingConfigs.getByName("debug")
         }
     }
 
@@ -167,11 +163,9 @@ dependencies {
     implementation(libs.guava)
     implementation(libs.coroutines.guava)
     implementation(libs.concurrent.futures)
-
     implementation(libs.activity)
     implementation(libs.hilt.navigation)
     implementation(libs.datastore)
-
     implementation(libs.compose.runtime)
     implementation(libs.compose.foundation)
     implementation(libs.compose.ui)
@@ -179,28 +173,20 @@ dependencies {
     implementation(libs.compose.ui.tooling)
     implementation(libs.compose.animation)
     implementation(libs.compose.reorderable)
-
     implementation(libs.viewmodel)
     implementation(libs.viewmodel.compose)
-
     implementation(libs.material3)
     implementation(libs.palette)
     implementation(libs.materialKolor)
-
     implementation(libs.appcompat)
-
     implementation(libs.coil)
     implementation(libs.coil.network.okhttp)
-
     implementation(libs.ucrop)
-
     implementation(libs.shimmer)
-
     implementation(libs.media3)
     implementation(libs.media3.session)
     implementation(libs.media3.okhttp)
 
-    // Google Cast - only included in GMS flavor (not available in F-Droid/FOSS builds)
     "gmsImplementation"(libs.media3.cast)
     "gmsImplementation"(libs.mediarouter)
     "gmsImplementation"(libs.cast.framework)
@@ -210,9 +196,7 @@ dependencies {
     implementation(libs.tinypinyin)
     ksp(libs.room.compiler)
     implementation(libs.room.ktx)
-
     implementation(libs.apache.lang3)
-
     implementation(libs.hilt)
     implementation(libs.jsoup)
     ksp(libs.hilt.compiler)
@@ -230,12 +214,9 @@ dependencies {
     implementation(libs.ktor.client.cio)
     implementation(libs.ktor.client.content.negotiation)
     implementation(libs.ktor.serialization.json)
-
-    // Protobuf for message serialization (lite version for Android)
     implementation(libs.protobuf.javalite)
     implementation(libs.protobuf.kotlin.lite)
 
     coreLibraryDesugaring(libs.desugaring)
-
     implementation(libs.timber)
 }
