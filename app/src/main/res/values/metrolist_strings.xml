@@ -472,9 +472,9 @@
     <string name="plays">plays</string>
     <string name="casting_to">Casting to %s</string>
     <string name="progress_percent">Progress %s%%</string>
-    <string name="listening_to_Hexaro_Music">Listening to Hexaro Music</string>
+    <string name="listening_to_hexaro_music">Listening to Hexaro Music</string>
     <string name="listen_on_youtube_music">Listen on YouTube Music</string>
-    <string name="visit_Hexaro_Music">Visit Hexaro Music</string>
+    <string name="visit_hexaro_music">Visit Hexaro Music</string>
     <string name="open">Open</string>
     <string name="failed_to_create_image">Failed to create image: %s</string>
     <string name="copied_title">Copied Title</string>
@@ -774,9 +774,9 @@
     <string name="discord_rpc_preview">Rich Presence Preview</string>
     <string name="discord_presence">Presence</string>
     <string name="discord_connect_description">Sign in with Discord to share what you\'re listening to</string>
-    <string name="discord_playing_Hexaro_Music">Playing Hexaro Music</string>
-    <string name="discord_watching_Hexaro_Music">Watching Hexaro Music</string>
-    <string name="discord_competing_Hexaro_Music">Competing in Hexaro Music</string>
+    <string name="discord_playing_hexaro_music">Playing Hexaro Music</string>
+    <string name="discord_watching_hexaro_music">Watching Hexaro Music</string>
+    <string name="discord_competing_hexaro_music">Competing in Hexaro Music</string>
     <string name="discord_activity_name">Activity name</string>
     <string name="discord_activity_name_description">Custom name for the activity (leave empty for default)</string>
     <string name="discord_advanced_mode">Advanced mode</string>
@@ -818,7 +818,7 @@
     <string name="like_what_i_do">Like what I do?</string>
     <string name="buy_mo_a_coffee">Buy me a coffee</string>
     <string name="community_and_info">Community &amp; Info</string>
-    <string name="Hexaro Music">Hexaro Music</string>
+    <string name="hexaro_music">Hexaro Music</string>
     <string name="wanna_play_favorite_song">Wanna play their favorite song?</string>
     <string name="yeah">Yeah</string>
     <string name="stands_with_palestine">This project stands with Palestine 🇵🇸</string>
